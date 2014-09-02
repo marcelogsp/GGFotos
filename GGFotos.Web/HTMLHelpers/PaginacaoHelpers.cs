@@ -11,7 +11,7 @@ namespace GGFotos.Web.HTMLHelpers
         public static MvcHtmlString PageLinks(this HtmlHelper html, Paginacao _paginacao, Func<int, string> paginaURL)
         {
             StringBuilder resultado = new StringBuilder();
-            for (int i = 1; i < _paginacao.TotalPaginas; i++)
+            for (int i = 1; i <= _paginacao.TotalPaginas; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", paginaURL(i));
@@ -22,7 +22,7 @@ namespace GGFotos.Web.HTMLHelpers
                     tag.AddCssClass("btn-primary");
                 }
 
-                tag.AddCssClass("btn-default");
+                tag.AddCssClass("btn btn-default");
                 resultado.Append(tag);
             }
             return MvcHtmlString.Create(resultado.ToString());
